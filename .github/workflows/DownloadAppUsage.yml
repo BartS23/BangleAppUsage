@@ -28,3 +28,19 @@ jobs:
         git config --local user.email "actions@github.com"
         git config --local user.name "Github Actions"
     
+    - name: Commit if necessary
+      run: |
+        set +e  # Don't terminate on first non-zero exit code
+        
+        COMMITMESSAGE=`date -I`
+        echo $COMMITMESSAGE
+        
+        git add appUsage.json
+        git diff-index --quiet HEAD appUsage.json
+        if [ $? -eq 1 ]
+        then
+          git status
+          git commit --file $COMMITMESSAGE
+          git push
+        fi      
+        
