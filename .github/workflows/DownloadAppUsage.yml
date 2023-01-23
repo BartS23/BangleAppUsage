@@ -22,7 +22,9 @@ jobs:
       
     - name: Download and format file
       run: node DownloadAppUsage.js
-
-    - name: Test
-      run: ls -la
+      
+    - name: Set Git config
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "Github Actions"
     
