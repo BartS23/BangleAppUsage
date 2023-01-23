@@ -40,7 +40,7 @@ jobs:
         if [ $? -eq 1 ]
         then
           git status
-          git commit --file $COMMITMESSAGE
+          git commit --message=$COMMITMESSAGE
           git push
         fi      
         
